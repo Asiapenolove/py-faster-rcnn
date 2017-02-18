@@ -27,13 +27,13 @@ case $DATASET in
     TRAIN_IMDB="WIDER_2016_trainval"
     TEST_IMDB="WIDER_2016_test"
     PT_DIR="faces_data"
-    ITERS=1000
+    ITERS=10000
     ;;
   FDDB)
     TRAIN_IMDB="FDDB_2010_trainval"
     TEST_IMDB="FDDB_2010_test"
     PT_DIR="faces_data"
-    ITERS=1000
+    ITERS=10000
     ;;
   pascal_voc)
     TRAIN_IMDB="voc_2007_trainval"
