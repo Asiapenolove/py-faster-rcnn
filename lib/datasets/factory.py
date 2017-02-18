@@ -11,9 +11,21 @@ __sets = {}
 
 from datasets.pascal_voc import pascal_voc
 from datasets.coco import coco
+from datasets.Faces_data import Faces_data
 import numpy as np
 
 # Set up voc_<year>_<split> using selective search "fast" mode
+
+for year in ['2010']:
+    for split in ['trainval', 'test']:
+        name = 'FDDB_{}_{}'.format(year, split)
+        __sets[name] = (lambda split=split, year=year: Faces_data(split, year, 'FDDB'))
+
+for year in ['2016']:
+    for split in ['trainval', 'test']:
+        name = 'WIDER_{}_{}'.format(year, split)
+        __sets[name] = (lambda split=split, year=year: Faces_data(split, year, 'WIDER'))
+
 for year in ['2007', '2012']:
     for split in ['train', 'val', 'trainval', 'test']:
         name = 'voc_{}_{}'.format(year, split)
