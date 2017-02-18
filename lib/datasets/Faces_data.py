@@ -269,12 +269,14 @@ class Faces_data(imdb):
             'Main',
             self._image_set + '.txt')
         cachedir = os.path.join(self._devkit_path, 'annotations_cache',self._DB_name)
+        if not os.path.isdir(cachedir):
+            os.makedirs(cachedir)
         aps = []
         # The PASCAL VOC metric changed in 2010
         use_07_metric = True if int(self._year) < 2017 else False
         print self._DB_name+' metric? ' + ('Yes' if use_07_metric else 'No')
         if not os.path.isdir(output_dir):
-            os.mkdirs(output_dir)
+            os.makedirs(output_dir)
         for i, cls in enumerate(self._classes):
             if cls == '__background__':
                 continue
