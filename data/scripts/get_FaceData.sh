@@ -23,14 +23,14 @@ esac
 
 # check folder exist or not
 cwd=$PWD
-DIRECTORY="$cwd/data/FacesDevkit/"
-DIRECTORY_FDDB="$cwd/data/FacesDevkit/$SetFolder"
+DIRECTORY="$cwd/data/FacesDevkit2017"
+DIRECTORY_FDDB="$cwd/data/FacesDevkit2017/$SetFolder"
 
 if [ -d "$cwd/data/scripts/Face_dataset_scripts/$dataset" ]; then
     if [ ! -d "$DIRECTORY" ]; then
-        echo "the FaceDevkit doesn't exist."
+        echo "the FaceDevkit2017 doesn't exist."
         echo "Create one, and fetching FDDB dataset..."
-        mkdir $cwd/data/FacesDevkit;
+        mkdir $DIRECTORY;
     fi
 else
     echo "folder data/scripts/Face_dataset_scripts/$dataset not found"
@@ -44,14 +44,15 @@ if [ ! -d "$DIRECTORY_FDDB" ]; then
         cd $cwd/data/scripts/Face_dataset_scripts/$dataset;
         ./get_data.sh;
 
-        # creating folder FDDB_2010 contatins:
+        # creating folder FDDB_2010/WIDER_2017 contatins:
         #    Annotations /JpgeImages / Imagesets
         cd pyxml;
         ./runit.sh;
 
-        # move FDDB_2010 to FacesDevkit
-        mv $SetFolder $cwd/data/FacesDevkit/
+        # move FDDB_2010/WIDER_2017 to FacesDevkit
+        mv $SetFolder $DIRECTORY_FDDB
+        mkdir -p $DIRECTORY/results/$SetFolder/Main
 else
-    echo "the FacesDevkit/FDDB_2010 already exist." 
+    echo "the FacesDevkit2017/$SetFolder already exist." 
 fi
 
