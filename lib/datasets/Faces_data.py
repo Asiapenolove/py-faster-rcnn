@@ -274,7 +274,7 @@ class Faces_data(imdb):
         use_07_metric = True if int(self._year) < 2017 else False
         print self._DB_name+' metric? ' + ('Yes' if use_07_metric else 'No')
         if not os.path.isdir(output_dir):
-            os.mkdir(output_dir)
+            os.mkdirs(output_dir)
         for i, cls in enumerate(self._classes):
             if cls == '__background__':
                 continue
